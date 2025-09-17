@@ -36,7 +36,7 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-
+        
         /* Navigation */
         nav {
             position: fixed;
@@ -520,6 +520,10 @@
         .person-card:hover {
             transform: translateY(-5px);
         }
+
+        .person-card[data-url] { cursor: pointer; }
+        .person-card[data-url] .person-name { text-decoration: underline; text-underline-offset: 3px; }
+
 
         .person-image {
             width: 160px;
@@ -1153,57 +1157,62 @@
         </section>
 
         <!-- Organizers Section -->
-        <section id="organizers">
-            <h2>Organizers</h2>
-            
-            <div class="people-grid">
-                <div class="person-card">
-                    <div class="person-image">
-                        <img src="assets/egor.png" alt="Egor Zverev" onerror="this.style.display='none'">
-                    </div>
-                    <div class="person-info">
-                        <div class="person-name">Egor Zverev</div>
-                        <div class="person-affiliation">Institute of Science and Technology Austria</div>
-                    </div>
-                </div>
-                <div class="person-card">
-                    <div class="person-image">
-                        <img src="assets/aideen.jpeg" alt="Aideen Fay" onerror="this.style.display='none'">
-                    </div>
-                    <div class="person-info">
-                        <div class="person-name">Aideen Fay</div>
-                        <div class="person-affiliation">Microsoft & Imperial College London</div>
-                    </div>
-                </div>
-                <div class="person-card">
-                    <div class="person-image">
-                        <img src="assets/sahar.jpg" alt="Sahar Abdelnabi" onerror="this.style.display='none'">
-                    </div>
-                    <div class="person-info">
-                        <div class="person-name">Sahar Abdelnabi</div>
-                        <div class="person-affiliation">Microsoft, ELLIS Institute Tübingen, MPI-IS & Tübingen AI Center</div>
-                    </div>
-                </div>
-                <div class="person-card">
-                    <div class="person-image">
-                        <img src="assets/mario.jpeg" alt="Mario Fritz" onerror="this.style.display='none'">
-                    </div>
-                    <div class="person-info">
-                        <div class="person-name">Mario Fritz</div>
-                        <div class="person-affiliation">CISPA Helmholtz Center & Saarland University</div>
-                    </div>
-                </div>
-                <div class="person-card">
-                    <div class="person-image">
-                        <img src="assets/christoph.jpg" alt="Christoph H. Lampert" onerror="this.style.display='none'">
-                    </div>
-                    <div class="person-info">
-                        <div class="person-name">Christoph H. Lampert</div>
-                        <div class="person-affiliation">Institute of Science and Technology Austria</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- Organizers Section -->
+<section id="organizers">
+  <h2>Organizers</h2>
+
+  <div class="people-grid">
+    <div class="person-card" data-url="https://ist.ac.at/en/research/">
+      <div class="person-image">
+        <img src="assets/egor.png" alt="Egor Zverev" onerror="this.style.display='none'">
+      </div>
+      <div class="person-info">
+        <div class="person-name">Egor Zverev</div>
+        <div class="person-affiliation">Institute of Science and Technology Austria</div>
+      </div>
+    </div>
+
+    <div class="person-card" data-url="https://www.microsoft.com/">
+      <div class="person-image">
+        <img src="assets/aideen.jpeg" alt="Aideen Fay" onerror="this.style.display='none'">
+      </div>
+      <div class="person-info">
+        <div class="person-name">Aideen Fay</div>
+        <div class="person-affiliation">Microsoft &amp; Imperial College London</div>
+      </div>
+    </div>
+
+    <div class="person-card" data-url="https://saharabdelnabi.com/">
+      <div class="person-image">
+        <img src="assets/sahar.jpg" alt="Sahar Abdelnabi" onerror="this.style.display='none'">
+      </div>
+      <div class="person-info">
+        <div class="person-name">Sahar Abdelnabi</div>
+        <div class="person-affiliation">Microsoft, ELLIS Institute Tübingen, MPI-IS &amp; Tübingen AI Center</div>
+      </div>
+    </div>
+
+    <div class="person-card" data-url="https://cispa.de/en/people/mario-fritz">
+      <div class="person-image">
+        <img src="assets/mario.jpeg" alt="Mario Fritz" onerror="this.style.display='none'">
+      </div>
+      <div class="person-info">
+        <div class="person-name">Mario Fritz</div>
+        <div class="person-affiliation">CISPA Helmholtz Center &amp; Saarland University</div>
+      </div>
+    </div>
+
+    <div class="person-card" data-url="https://lampert.info/">
+      <div class="person-image">
+        <img src="assets/christoph.jpg" alt="Christoph H. Lampert" onerror="this.style.display='none'">
+      </div>
+      <div class="person-info">
+        <div class="person-name">Christoph H. Lampert</div>
+        <div class="person-affiliation">Institute of Science and Technology Austria</div>
+      </div>
+    </div>
+  </div>
+</section>
 
         <!-- Contact Section -->
         <section id="contact">
@@ -1486,6 +1495,18 @@
                 }
             });
         });
+
+        // Make organizer cards clickable via data-url
+        document.querySelectorAll('.person-card[data-url]').forEach(card => {
+          const url = card.getAttribute('data-url');
+          if (!url) return;
+          card.addEventListener('click', (e) => {
+            // avoid triggering when selecting text
+            if (window.getSelection().toString().length > 0) return;
+            window.open(url, '_blank', 'noopener');
+          });
+        });
+
     </script>
 </body>
 </html>
