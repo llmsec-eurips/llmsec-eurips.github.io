@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop Announcement</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #1a1a2e;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .announcement {
+            width: 1200px;
+            background: white;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            transform-origin: top center;
+        }
+        
+        .hero {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 40px 60px;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(118, 75, 162, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(52, 211, 153, 0.1) 0%, transparent 40%);
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+            opacity: 0.5;
+        }
+        
+        .circuit-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+            background-image: 
+                linear-gradient(90deg, transparent 48%, rgba(52, 211, 153, 0.5) 49%, rgba(52, 211, 153, 0.5) 51%, transparent 52%),
+                linear-gradient(0deg, transparent 48%, rgba(52, 211, 153, 0.5) 49%, rgba(52, 211, 153, 0.5) 51%, transparent 52%);
+            background-size: 100px 100px;
+            background-position: 0 0, 50px 50px;
+        }
+        
+        .neural-network {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .node {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: rgba(52, 211, 153, 0.6);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(52, 211, 153, 0.8);
+        }
+        
+        .node:nth-child(1) { top: 15%; left: 10%; }
+        .node:nth-child(2) { top: 25%; left: 25%; }
+        .node:nth-child(3) { top: 40%; left: 15%; }
+        .node:nth-child(4) { top: 60%; left: 20%; }
+        .node:nth-child(5) { top: 20%; right: 15%; }
+        .node:nth-child(6) { top: 35%; right: 25%; }
+        .node:nth-child(7) { top: 55%; right: 18%; }
+        .node:nth-child(8) { top: 75%; right: 30%; }
+        .node:nth-child(9) { top: 45%; left: 50%; }
+        .node:nth-child(10) { top: 30%; left: 70%; }
+        
+        .lock-icon {
+            position: absolute;
+            bottom: 40px;
+            right: 60px;
+            font-size: 120px;
+            opacity: 0.05;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .title {
+            font-size: 72px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+        
+        .conference {
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+        
+        .date {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .location {
+            font-size: 28px;
+            font-weight: 300;
+        }
+        
+        .speakers-section {
+            background: #f8f8f8;
+            padding: 40px 80px 40px 80px;
+        }
+        
+        .speakers-title {
+            font-size: 48px;
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+        
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 50px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .speaker {
+            text-align: center;
+        }
+        
+        .speaker-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-weight: 700;
+            overflow: hidden;
+        }
+        
+        .speaker-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .speaker-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .speaker-affiliation {
+            font-size: 15px;
+            color: #666;
+            font-weight: 400;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 0 80px 60px 80px;
+            background: #f8f8f8;
+        }
+        
+        .cta-title {
+            font-size: 42px;
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .cta-subtitle {
+            font-size: 28px;
+            color: #666;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+    <div class="announcement">
+        <div class="hero">
+            <div class="circuit-pattern"></div>
+            <div class="neural-network">
+                <div class="node"></div>
+                <div class="node"></div>
+                <div class="node"></div>
+                <div class="node"></div>
+                <div class="node"></div>
+                <div class="node"></div>
+                <div class="node"></div>
+                <div class="node"></div>
+                <div class="node"></div>
+                <div class="node"></div>
+            </div>
+            <div class="lock-icon">🔒</div>
+            <div class="hero-content">
+                <h1 class="title">Foundations of<br>LLM Security</h1>
+                <p class="conference">@EurIPS 2025</p>
+                <p class="date">December 6 or 7, 2025 (TBA)</p>
+                <p class="location">Copenhagen, Denmark</p>
+            </div>
+        </div>
+        
+        <div class="speakers-section">
+            <h2 class="speakers-title">Speakers</h2>
+            <div class="speakers-grid">
+                <div class="speaker">
+                    <div class="speaker-photo">
+                        <img src="https://research.ibm.com/_next/image?url=https%3A%2F%2Fresearch-website-prod-ibmers-images.s3.us-east.cloud-object-storage.appdomain.cloud%2F18453&w=640&q=75" alt="Kathrin Grosse">
+                    </div>
+                    <div class="speaker-name">Kathrin Grosse</div>
+                    <div class="speaker-affiliation">IBM Research, Zurich</div>
+                </div>
+                <div class="speaker">
+                    <div class="speaker-photo">
+                        <img src="https://llmsec-eurips.github.io/assets/Verena.jpg" alt="Verena Rieser">
+                    </div>
+                    <div class="speaker-name">Verena Rieser</div>
+                    <div class="speaker-affiliation">Google DeepMind</div>
+                </div>
+                <div class="speaker">
+                    <div class="speaker-photo">
+                        <img src="https://www.chch.ox.ac.uk/sites/default/files/styles/portrait/public/migrated/Dr_Ilia_Shumailov_Christchurch_by_Ian_Wallman_0002.jpg" alt="Ilia Shumailov">
+                    </div>
+                    <div class="speaker-name">Ilia Shumailov</div>
+                    <div class="speaker-affiliation">AI Sequrity Company</div>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <h3 class="cta-title">Call for Participation is out!</h3>
+                <p class="cta-subtitle">Submission deadline: October 17</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
