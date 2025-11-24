@@ -37,7 +37,6 @@
             -moz-osx-font-smoothing: grayscale;
         }
         
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -108,7 +107,6 @@
             color: var(--primary-black);
         }
 
-        /* Hero Banner */
         .hero-banner {
             position: relative;
             width: 100%;
@@ -169,7 +167,6 @@
             animation: fadeInUp 1s ease-out 0.4s forwards;
         }
 
-        /* Content Sections */
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -237,7 +234,6 @@
             line-height: 1.8;
         }
 
-        /* Schedule Timeline */
         .timeline {
             position: relative;
             padding-left: 40px;
@@ -315,7 +311,6 @@
             font-style: italic;
         }
 
-        /* Format Grid */
         .format-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -387,7 +382,6 @@
             font-weight: 600;
         }
 
-        /* Thematic Blocks */
         .thematic-blocks {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -462,7 +456,6 @@
             z-index: 1;
         }
 
-        /* Speaker & Organizer Cards */
         .people-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -478,8 +471,6 @@
             gap: 60px;
         }
         
-        /* Make last 2 organizers center on second row */
-        /* Center last 2 organizers on second row — robust, no overlap */
         .people-grid:not(.speakers-grid) {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
@@ -489,26 +480,15 @@
 
         .people-grid:not(.speakers-grid) .person-card {
             grid-column: span 2;
-            padding: 0;               /* reset any prior padding tweaks */
+            padding: 0;
         }
 
-        /* Put the 4th and 5th organizers in the middle four columns */
         .people-grid:not(.speakers-grid) .person-card:nth-child(4) {
-            grid-column: 2 / span 2;  /* columns 2–3 */
+            grid-column: 2 / span 2;
         }
 
         .people-grid:not(.speakers-grid) .person-card:nth-child(5) {
-            grid-column: 4 / span 2;  /* columns 4–5 */
-        }
-
-        /* Medium screens: fall back to 2 columns normally */
-        @media (max-width: 900px) {
-            .people-grid:not(.speakers-grid) {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .people-grid:not(.speakers-grid) .person-card {
-                grid-column: auto;
-            }
+            grid-column: 4 / span 2;
         }
 
         .person-card {
@@ -523,7 +503,6 @@
 
         .person-card[data-url] { cursor: pointer; }
         .person-card[data-url] .person-name { text-decoration: underline; text-underline-offset: 3px; }
-
 
         .person-image {
             width: 160px;
@@ -593,7 +572,58 @@
             font-style: italic;
         }
 
-        /* Call for Papers */
+        .speakers-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .speaker-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .speaker-photo {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 16px;
+            flex-shrink: 0;
+        }
+
+        .speaker-info {
+            flex: 1;
+        }
+
+        .speaker-name a {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--primary-black);
+            text-decoration: none;
+        }
+
+        .speaker-affiliation {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .speaker-role {
+            font-size: 0.85rem;
+            color: var(--text-tertiary);
+            font-style: italic;
+            margin-top: 4px;
+        }
+
+        .speaker-abstract {
+            margin-top: 10px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
         .deadline-box {
             background: linear-gradient(135deg, var(--bg-subtle), white);
             padding: 35px 30px;
@@ -625,9 +655,7 @@
             line-height: 1.8;
         }
 
-
-         /* Apply Button */
-         .apply-button {
+        .apply-button {
             display: block;
             padding: 18px 30px;
             background: var(--primary-black);
@@ -651,7 +679,6 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
-        /* Contact Section */
         .contact-info {
             text-align: center;
             padding: 60px;
@@ -691,7 +718,6 @@
             transform: scaleX(0);
         }
 
-        /* Animations */
         @keyframes fadeIn {
             to {
                 opacity: 1;
@@ -720,7 +746,6 @@
             }
         }
 
-        /* Medium screens */
         @media (max-width: 900px) {
             .people-grid.speakers-grid {
                 max-width: 100%;
@@ -746,9 +771,13 @@
             .people-grid:not(.speakers-grid) {
                 grid-template-columns: 1fr;
             }
+
+            .speaker-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
         
-        /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
                 gap: 15px;
@@ -775,7 +804,6 @@
                 letter-spacing: 2px;
             }
             
-            /* Format section responsive */
             .format-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -817,7 +845,6 @@
                 padding-left: 30px;
             }
             
-            /* Call for Talks responsive layout */
             section#call-for-talks > div:first-of-type {
                 grid-template-columns: 1fr !important;
                 gap: 40px !important;
@@ -828,7 +855,6 @@
             }
         }
 
-        /* Print Styles */
         @media print {
             nav {
                 display: none;
@@ -851,7 +877,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
             <div class="nav-title">EurIPS'25 Workshop</div>
@@ -868,7 +893,6 @@
         </div>
     </nav>
 
-    <!-- Hero Banner with Enhanced Physics -->
     <div class="hero-banner">
         <canvas id="particles-canvas"></canvas>
         <div class="hero-content">
@@ -879,7 +903,6 @@
     </div>
 
     <div class="container">
-        <!-- About Section -->
         <section id="about">
             <h2>About the Workshop</h2>
 
@@ -902,7 +925,6 @@ Language model security remains fundamentally misunderstood. While researchers h
             </p>
         </section>
 
-        <!-- Workshop Format Section -->
         <section id="format">
             <h2>Workshop Format</h2>
             
@@ -926,7 +948,7 @@ Language model security remains fundamentally misunderstood. While researchers h
                     <span class="block-number">1</span>
                     <h4>Securing Real-World AI Agents</h4>
                     <p> </p>
-                    <div class="block-keynote">Keynote: Luca Beurer-Kellner (Synk)</div>
+                    <div class="block-keynote">Keynote: Luca Kellner (Snyk)</div>
                 </div>
                 <div class="block-card">
                     <span class="block-number">2</span>
@@ -954,101 +976,105 @@ Language model security remains fundamentally misunderstood. While researchers h
                     ×4
                 </div>
             </div>
-
-            
-            
         </section>
 
-
-        <!-- Invited Speakers Section -->
         <section id="speakers">
           <h2>Invited Speakers</h2>
         
-          <div class="people-grid speakers-grid">
-            <div class="person-card">
-              <div class="person-image">
-                <img src="assets/kathrin.jpg" alt="Kathrin Grosse" onerror="this.style.display='none'">
-              </div>
-              <div class="person-info">
-                <div class="person-name">
-                  <a href="https://research.ibm.com/people/kathrin-grosse" target="_blank" rel="noopener">Kathrin Grosse</a>
+          <div class="speakers-list">
+
+            <div class="speaker-row">
+              <img class="speaker-photo" src="assets/kathrin.jpg" alt="Kathrin Grosse"
+                   onerror="this.style.display='none'">
+
+              <div class="speaker-info">
+                <div class="speaker-name">
+                  <a href="https://research.ibm.com/people/kathrin-grosse" target="_blank" rel="noopener">
+                    Kathrin Grosse
+                  </a>
                 </div>
-                <div class="person-affiliation">IBM Research, Zurich</div>
-                <div class="person-role">AI Security in Industry</div>
-                <div class="person-abstract">
-                    <strong>LLM Security - An industrial and an end-users' perspective:</strong><br>
-                    LLMs are widely used, in both industry and by end users. Yet, on both ends of these spectrums, there are very different challenges, 
-                    which we will discuss in this talk. On the one hand, companies must ensure the availability, confidentiality, and integrity of systems - on a level that supports both governance and audit-ability. 
-                    On the other hand, end-users face different dilemmas when interacting with LLM. They are often unaware of pitfalls and engage, potentially unaware, 
-                    in security-relevant behavior. Lastly, we briefly discuss AI security incident reporting as a possible solution to the open questions raised in both areas.to look like.
+                <div class="speaker-affiliation">IBM Research, Zurich</div>
+                <div class="speaker-role">AI Security in Industry</div>
+
+                <div class="speaker-abstract">
+                  <strong>LLM Security - An industrial and an end-users' perspective:</strong><br>
+                  LLMs are widely used, in both industry and by end users. Yet, on both ends of these spectrums,
+                  there are very different challenges, which we will discuss in this talk. On the one hand, companies
+                  must ensure the availability, confidentiality, and integrity of systems - on a level that supports
+                  both governance and audit-ability. On the other hand, end-users face different dilemmas when
+                  interacting with LLM. They are often unaware of pitfalls and engage, potentially unaware, in
+                  security-relevant behavior. Lastly, we briefly discuss AI security incident reporting as a possible
+                  solution to the open questions raised in both areas.
                 </div>
               </div>
             </div>
-        
-            <div class="person-card">
-              <div class="person-image">
-                <img src="assets/ilia.jpg" alt="Ilia Shumailov" onerror="this.style.display='none'">
-              </div>
-              <div class="person-info">
-                <div class="person-name">
-                  <a href="https://iliaishacked.github.io/" target="_blank" rel="noopener">Ilia Shumailov</a>
+
+            <div class="speaker-row">
+              <img class="speaker-photo" src="assets/luca.jpg" alt="Luca Kellner"
+                   onerror="this.style.display='none'">
+
+              <div class="speaker-info">
+                <div class="speaker-name">
+                  <a href="https://www.sri.inf.ethz.ch/people/luca" target="_blank" rel="noopener">
+                    Luca Beurer-Kellner
+                  </a>
                 </div>
-                <div class="person-affiliation">AI Sequrity Company</div>
-                <div class="person-role">ML Security & Privacy</div>
-                <div class="person-abstract">
-                    <strong> Trade-offs in System-level defences against Prompt Injections:</strong> <br>
+                <div class="speaker-affiliation">Snyk</div>
+                <div class="speaker-role">Securing Real-World AI Agents</div>
+        
+                <div class="speaker-abstract">
+                  <strong>Securing Real-World AI Agents:</strong><br>
+                  AI agents introduce a paradigm shift in software security, moving from
+                  predictable, deterministic systems to components with non-deterministic
+                  behavior. This presents critical challenges, especially when agents are given
+                  autonomy and access to sensitive real-world computer systems (such as coding
+                  IDEs). This talk provides insight into Snyk's security research, detailing
+                  ongoing work to both exploit and secure real-world agents. Based on extensive
+                  red teaming against Model Context Protocol (MCP) systems, we illustrate key
+                  vulnerabilities and present a framework for effectively protecting against
+                  sophisticated attacks.
+                </div>
+              </div>
+            </div>
+
+            <div class="speaker-row">
+              <img class="speaker-photo" src="assets/ilia.jpg" alt="Ilia Shumailov"
+                   onerror="this.style.display='none'">
+
+              <div class="speaker-info">
+                <div class="speaker-name">
+                  <a href="https://iliaishacked.github.io/" target="_blank" rel="noopener">
+                    Ilia Shumailov
+                  </a>
+                </div>
+                <div class="speaker-affiliation">AI Sequrity Company</div>
+                <div class="speaker-role">ML Security &amp; Privacy</div>
+                <div class="speaker-abstract">
+                    <strong>Trade-offs in System-level defences against Prompt Injections:</strong> <br>
                     In this talk I will discuss what we currently know about prompt injection 
                     defences today, followed by what the next generation of defences is likely to look like.
                 </div>
               </div>
             </div>
 
-              
-            <div class="person-card">
-              <div class="person-image">
-                <img src="assets/luca.jpg" alt="Luca Kellner" onerror="this.style.display='none'">
-              </div>
-              <div class="person-info">
-                <div class="person-name">
-                  <a href="https://www.sri.inf.ethz.ch/people/luca" target="_blank" rel="noopener">
-                    Luca Kellner
-                  </a>
+            <div class="speaker-row">
+              <img class="speaker-photo" src="assets/santiago.jpg" alt="Santiago Zanella-Béguelin"
+                   onerror="this.style.display='none'">
+
+              <div class="speaker-info">
+                <div class="speaker-name">
+                    <a href="https://www.microsoft.com/en-us/research/people/santiago/" target="_blank" rel="noopener">
+                      Santiago Zanella-Béguelin
+                    </a>
                 </div>
-                <div class="person-affiliation">Snyk</div>
-                <div class="person-role">Securing Real-World AI Agents</div>
-        
-                <div class="person-abstract">
-                  <strong>Securing Real-World AI Agents:</strong><br>
-                  AI agents introduce a paradigm shift in software security, moving from 
-                  predictable, deterministic systems to components with non-deterministic 
-                  behavior. This presents critical challenges, especially when agents are given 
-                  autonomy and access to sensitive real-world computer systems (such as coding 
-                  IDEs). This talk provides insight into Snyk's security research, detailing 
-                  ongoing work to both exploit and secure real-world agents. Based on extensive 
-                  red teaming against Model Context Protocol (MCP) systems, we illustrate key 
-                  vulnerabilities and present a framework for effectively protecting against 
-                  sophisticated attacks.
-                </div>
+                <div class="speaker-affiliation">Microsoft Research Cambridge</div>
+                <div class="speaker-role">Confidential AI Team</div>
               </div>
             </div>
-        
-            <div class="person-card">
-                <div class="person-image">
-                  <img src="assets/santiago.jpg" alt="Santiago Zanella-Béguelin" onerror="this.style.display='none'">
-                </div>
-                <div class="person-info">
-                  <div class="person-name">
-                    <a href="https://www.microsoft.com/en-us/research/people/santiago/" target="_blank" rel="noopener">Santiago Zanella-Béguelin</a>
-                  </div>
-                  <div class="person-affiliation">Microsoft Research Cambridge</div>
-                  <div class="person-role">Confidential AI Team</div>
-                    
-                </div>
-              </div>
 
+          </div>
         </section>
 
-        <!-- Schedule Section -->
         <section id="schedule">
             <h2>Schedule</h2>
             
@@ -1059,8 +1085,8 @@ Language model security remains fundamentally misunderstood. While researchers h
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-time">09:00 - 11:45</div>
-                    <div class="timeline-title"><strong>Block 1:</strong> TBA</div>
-                    <div class="timeline-speaker">Keynote: Santiago Zanella-Béguelin</div>
+                    <div class="timeline-title"><strong>Block 1:</strong> Trade-offs in System-level defences against Prompt Injections</div>
+                    <div class="timeline-speaker">Keynote: Ilia Shumailov</div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-time">11:45 - 13:00</div>
@@ -1077,8 +1103,8 @@ Language model security remains fundamentally misunderstood. While researchers h
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-time">15:00 - 16:45</div>
-                    <div class="timeline-title"><strong>Block 3:</strong> Trade-offs in System-level defences against Prompt Injections</div>
-                    <div class="timeline-speaker">Keynote: Ilia Shumailov</div>
+                    <div class="timeline-title"><strong>Block 3:</strong> </div>
+                    <div class="timeline-speaker">Keynote: Santiago Zanella-Béguelin</div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-time">16:45 - 17:00</div>
@@ -1086,10 +1112,8 @@ Language model security remains fundamentally misunderstood. While researchers h
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-time">17:00 - 18:30</div>
-                    <div class="timeline-title"><strong>Block 4:</strong> Emergent Security in Complex AI Ecosystems</div>
-                    <div class="timeline-speaker">Keynote: Verena Rieser (Google DeepMind)</div>
-                    
-                    
+                    <div class="timeline-title"><strong>Block 4:</strong> Securing Real-World AI Agents</div>
+                    <div class="timeline-speaker">Keynote: Luca Beurer-Kellner (Snyk)</div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-time">18:30</div>
@@ -1098,10 +1122,9 @@ Language model security remains fundamentally misunderstood. While researchers h
             </div>
         </section>
 
-        <!-- Call for Talks Section -->
-    <section id="call-for-talks">
+        <section id="call-for-talks">
     <h2>Contributed Talks</h2>
-    <p>We are delighted to present the following talks which will be presented as lightning talks at the workshop. Thank you to all who submitted talks and supported the review process.</p>
+    <p>We are excited to share that the following researchers which be presenting their work as lightning talks at the workshop. Thank you to all who submitted talks and supported the review process.</p>
 
     <div class="timeline" style="margin-top: 50px;">
         <div class="timeline-item">
@@ -1158,8 +1181,7 @@ Language model security remains fundamentally misunderstood. While researchers h
             </ul>
         </section>
 
-        <!-- Organizers Section -->
-<section id="organizers">
+        <section id="organizers">
   <h2>Organizers</h2>
 
   <div class="people-grid">
@@ -1228,7 +1250,6 @@ Language model security remains fundamentally misunderstood. While researchers h
     </div>
 </section>
 
-        <!-- Contact Section -->
         <section id="contact">
             <h2>Contact</h2>
             
@@ -1244,7 +1265,6 @@ Language model security remains fundamentally misunderstood. While researchers h
     </div>
 
     <script>
-        // Enhanced Navigation
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
@@ -1253,7 +1273,6 @@ Language model security remains fundamentally misunderstood. While researchers h
                 navbar.classList.remove('scrolled');
             }
 
-            // Section highlighting
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-link');
             
@@ -1274,7 +1293,6 @@ Language model security remains fundamentally misunderstood. While researchers h
             });
         });
 
-        // Simple Physics Simulation - Floating Points
         const canvas = document.getElementById('particles-canvas');
         const ctx = canvas.getContext('2d');
         
@@ -1291,30 +1309,25 @@ Language model security remains fundamentally misunderstood. While researchers h
                 this.gridY = gridY;
                 this.vx = 0;
                 this.vy = 0;
-                this.radius = 0.5; // Small dots
-                this.brightness = 0.8; // Clearly visible initial brightness
+                this.radius = 0.5;
+                this.brightness = 0.8;
                 this.targetBrightness = 0.8;
             }
             
             update(mouseX, mouseY, mouseSpeed, isClicking, clickPhase) {
-                // Mouse influence for wave effect
                 const dx = mouseX - this.x;
                 const dy = mouseY - this.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 
-                // More fluid wave influence with larger radius and stronger effect
                 if (distance < 250) {
                     const influence = (1 - distance / 250) * mouseSpeed * 0.03;
-                    this.vx -= dx * influence * 0.02; // Push away for more fluid motion
+                    this.vx -= dx * influence * 0.02;
                     this.vy -= dy * influence * 0.02;
-                    
-                    // Brightness based on proximity
                     this.targetBrightness = Math.min(1, 0.8 + (1 - distance / 250) * 0.2);
                 } else {
                     this.targetBrightness = 0.8;
                 }
                 
-                // Click choreography
                 if (isClicking) {
                     const clickX = mouseX;
                     const clickY = mouseY;
@@ -1324,7 +1337,6 @@ Language model security remains fundamentally misunderstood. While researchers h
                     );
                     
                     if (clickPhase === 'expand') {
-                        // Beautiful expanding wave from click point
                         if (distFromClick < 300) {
                             const angle = Math.atan2(this.y - clickY, this.x - clickX);
                             const waveForce = Math.sin(distFromClick * 0.05 - clickTimer * 0.3) * 8;
@@ -1332,13 +1344,11 @@ Language model security remains fundamentally misunderstood. While researchers h
                             this.vy += Math.sin(angle) * waveForce * (1 - distFromClick / 300);
                         }
                     } else if (clickPhase === 'chaos') {
-                        // Chaotic movement
                         if (distFromClick < 200) {
                             this.vx += (Math.random() - 0.5) * 8;
                             this.vy += (Math.random() - 0.5) * 8;
                         }
                     } else if (clickPhase === 'return') {
-                        // Return to base position
                         const returnDx = this.baseX - this.x;
                         const returnDy = this.baseY - this.y;
                         this.vx += returnDx * 0.03;
@@ -1346,22 +1356,18 @@ Language model security remains fundamentally misunderstood. While researchers h
                     }
                 }
                 
-                // Spring force to return to base position - more fluid
-                const springStrength = 0.015; // Weaker spring for more movement
-                const dampening = 0.92; // Less dampening for more fluid motion
+                const springStrength = 0.015;
+                const dampening = 0.92;
                 
                 this.vx += (this.baseX - this.x) * springStrength;
                 this.vy += (this.baseY - this.y) * springStrength;
                 
-                // Apply velocity
                 this.x += this.vx;
                 this.y += this.vy;
                 
-                // Dampening
                 this.vx *= dampening;
                 this.vy *= dampening;
                 
-                // Smooth brightness transition
                 this.brightness += (this.targetBrightness - this.brightness) * 0.1;
             }
             
@@ -1374,9 +1380,8 @@ Language model security remains fundamentally misunderstood. While researchers h
             }
         }
         
-        // Create grid of points
         const points = [];
-        const spacing = 12; // Tighter spacing for smaller dots
+        const spacing = 12;
         const cols = Math.floor(canvas.width / spacing) + 1;
         const rows = Math.floor(canvas.height / spacing) + 1;
         
@@ -1400,20 +1405,17 @@ Language model security remains fundamentally misunderstood. While researchers h
         let clickPhase = '';
         let clickTimer = 0;
         
-        // Clear canvas initially for visible dots
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
         function animate() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'; // Very subtle fade for trailing effect
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
-            // Calculate mouse speed
             const mouseDx = mouseX - lastMouseX;
             const mouseDy = mouseY - lastMouseY;
             const currentSpeed = Math.sqrt(mouseDx * mouseDx + mouseDy * mouseDy);
-            mouseSpeed = mouseSpeed * 0.7 + currentSpeed * 0.3; // More responsive to changes
+            mouseSpeed = mouseSpeed * 0.7 + currentSpeed * 0.3;
             
-            // Update click animation phase
             if (isClicking) {
                 clickTimer++;
                 if (clickTimer < 20) {
@@ -1429,7 +1431,6 @@ Language model security remains fundamentally misunderstood. While researchers h
                 }
             }
             
-            // Update and draw points
             points.forEach(point => {
                 point.update(mouseX, mouseY, mouseSpeed, isClicking, clickPhase);
                 point.draw();
@@ -1441,7 +1442,6 @@ Language model security remains fundamentally misunderstood. While researchers h
             requestAnimationFrame(animate);
         }
         
-        // Mouse interaction
         canvas.addEventListener('mousemove', (e) => {
             const rect = canvas.getBoundingClientRect();
             mouseX = e.clientX - rect.left;
@@ -1454,7 +1454,6 @@ Language model security remains fundamentally misunderstood. While researchers h
             mouseSpeed = 0;
         });
         
-        // Click interaction
         canvas.addEventListener('click', (e) => {
             const rect = canvas.getBoundingClientRect();
             mouseX = e.clientX - rect.left;
@@ -1465,14 +1464,12 @@ Language model security remains fundamentally misunderstood. While researchers h
             clickPhase = 'expand';
         });
         
-        // Resize handler
         window.addEventListener('resize', () => {
             canvas.width = canvas.offsetWidth;
             canvas.height = canvas.offsetHeight;
             
-            // Recreate points grid
             points.length = 0;
-            const spacing = 12; // Match the tighter spacing
+            const spacing = 12;
             const newCols = Math.floor(canvas.width / spacing) + 1;
             const newRows = Math.floor(canvas.height / spacing) + 1;
             
@@ -1487,7 +1484,6 @@ Language model security remains fundamentally misunderstood. While researchers h
                 }
             }
             
-            // Draw immediately after resize
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             points.forEach(point => {
                 point.draw();
@@ -1496,7 +1492,6 @@ Language model security remains fundamentally misunderstood. While researchers h
         
         animate();
 
-        // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1510,12 +1505,10 @@ Language model security remains fundamentally misunderstood. While researchers h
             });
         });
 
-        // Make organizer cards clickable via data-url
         document.querySelectorAll('.person-card[data-url]').forEach(card => {
           const url = card.getAttribute('data-url');
           if (!url) return;
           card.addEventListener('click', (e) => {
-            // avoid triggering when selecting text
             if (window.getSelection().toString().length > 0) return;
             window.open(url, '_blank', 'noopener');
           });
